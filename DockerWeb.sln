@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JLP.Web", "DockerWeb\JLP.Web.csproj", "{D2D964EB-F7AE-498B-8BC3-DBD682B87099}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JLP.DB", "JLP.DB\JLP.DB.csproj", "{25040677-C359-4FD2-8567-A03CF7480B51}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D2D964EB-F7AE-498B-8BC3-DBD682B87099}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2D964EB-F7AE-498B-8BC3-DBD682B87099}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2D964EB-F7AE-498B-8BC3-DBD682B87099}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2D964EB-F7AE-498B-8BC3-DBD682B87099}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25040677-C359-4FD2-8567-A03CF7480B51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25040677-C359-4FD2-8567-A03CF7480B51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25040677-C359-4FD2-8567-A03CF7480B51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25040677-C359-4FD2-8567-A03CF7480B51}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9B1B74A2-B913-4835-9BF9-2D021ECCCA83}
+	EndGlobalSection
+EndGlobal
