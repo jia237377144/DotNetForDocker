@@ -1,0 +1,67 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\vs项目\\DockerWeb\\DockerWeb\\DockerWeb.csproj": {}
+  },
+  "projects": {
+    "E:\\vs项目\\DockerWeb\\DockerWeb\\DockerWeb.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\vs项目\\DockerWeb\\DockerWeb\\DockerWeb.csproj",
+        "projectName": "DockerWeb",
+        "projectPath": "E:\\vs项目\\DockerWeb\\DockerWeb\\DockerWeb.csproj",
+        "packagesPath": "X:\\Users\\jlp\\.nuget\\packages\\",
+        "outputPath": "E:\\vs项目\\DockerWeb\\DockerWeb\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "X:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "X:\\Users\\jlp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "X:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "X:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://packagesource": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "X:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

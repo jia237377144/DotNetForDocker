@@ -1,0 +1,8 @@
+E:\vs项目\DockerWeb\JLP.DB\bin\Debug\netcoreapp3.1\JLP.DB.deps.json
+E:\vs项目\DockerWeb\JLP.DB\bin\Debug\netcoreapp3.1\JLP.DB.dll
+E:\vs项目\DockerWeb\JLP.DB\obj\Debug\netcoreapp3.1\JLP.DB.AssemblyInfoInputs.cache
+E:\vs项目\DockerWeb\JLP.DB\obj\Debug\netcoreapp3.1\JLP.DB.AssemblyInfo.cs
+E:\vs项目\DockerWeb\JLP.DB\bin\Debug\netcoreapp3.1\JLP.DB.pdb
+E:\vs项目\DockerWeb\JLP.DB\obj\Debug\netcoreapp3.1\JLP.DB.dll
+E:\vs项目\DockerWeb\JLP.DB\obj\Debug\netcoreapp3.1\JLP.DB.pdb
+E:\vs项目\DockerWeb\JLP.DB\obj\Debug\netcoreapp3.1\JLP.DB.csprojAssemblyReference.cache
