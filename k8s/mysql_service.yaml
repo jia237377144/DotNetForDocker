@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    k8s.web.com/name: db
+  name: db
+spec:
+  selector:
+    k8s.web.com/name: db
+  ports:
+  - port: 3306
+    targetPort: 3306
+    name: db
+    protocol: TCP

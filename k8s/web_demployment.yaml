@@ -1,0 +1,34 @@
+#资源的版本的版本:kubectl explain deployment 查看所有版本 ：kubectl api-versions
+apiVersion: apps/v1
+#当前资源：Deployment，查看 所有资源: kubectl api-resources
+kind: Deployment
+metadata:
+  labels:
+    #这里就是定义Deployment的标签，在Service中使用，就和JS中的选择器一样，可以有多个
+    k8s.web.com/name: web
+  name: web
+spec:
+  #Deployment的选择器，用来选择template，
+  selector:
+    matchLabels: 
+      #这个和下面的template的labels一致，来选择template
+      k8s.web.com/name: web
+  template:
+    metadata:
+      labels:
+        #定义pod的label
+        k8s.web.com/name: web
+    spec:
+      #定义容器，这里容器可以是多个，也就是1个pod对应多个容器
+      containers:
+        - image: docker.tidebuy.net/jlp_web:latest
+          imagePullPolicy: Always
+          name: web
+          ports:
+            - containerPort: 80
+              name: http
+              protocol: TCP
+          resources:
+              requests:
+                cpu: "1"
+                memory: 1Gi

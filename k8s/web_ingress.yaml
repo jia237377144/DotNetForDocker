@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  labels:
+    k8s.web.com/name: web
+  name: web
+spec:
+  rules:
+    - host: www.web.com
+      http:
+          paths:
+            - backend:
+                serviceName: web
+                servicePort: 80
+              path: /

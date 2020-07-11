@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db
+spec:
+  selector:
+    matchLabels:
+      k8s.web.com/name: db
+  template:
+    metadata:
+      labels:
+        k8s.web.com/name: db
+    spec:
+      containers:
+      - name: db
+        image: mysql:5.7.30
+        resources:
+          limits:
+            memory: 1Gi
+            cpu: "2"
+        ports:
+        - containerPort: 3306
+          name: db
+          protocol: TCP
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: "123456"
+          - name: MYSQL_PASSWORD
+            value: "123456"
+          - name: MYSQL_USER
+            value: admin
+          - name: MYSQL_DATABASE
+            value: dockerweb
+      initContainers:
+      - command:
+        - rm
+        - -fr
+        - /var/lib/mysql/lost+found
+        image: busybox:1.31.1
+        imagePullPolicy: IfNotPresent
+        name: remove-lost-found
+        resources:
+           requests:
+             cpu: 100m
+             memory: 100Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /var/lib/mysql
+          name: data
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: default
+      serviceAccountName: default
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: db
+      
