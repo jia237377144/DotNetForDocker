@@ -22,11 +22,23 @@ spec:
         - containerPort: 3306
           name: db
           protocol: TCP
+        volumeMounts:
+          - mountPath: /var/lib/mysql
+            name: data
+          - mountPath: /etc/mysql/conf.d/mysql_custom.cnf
+            name: configurations
+            subPath: mysql_custom.cnf
         env:
           - name: MYSQL_ROOT_PASSWORD
-            value: "123456"
-          - name: MYSQL_PASSWORD
-            value: "123456"
+            valueFrom:
+                secretKeyRef:
+                  name: mysql-secrets
+                  key: mysql-password
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+                secretKeyRef:
+                  name: mysql-secrets
+                  key: mysql-root-password
           - name: MYSQL_USER
             value: admin
           - name: MYSQL_DATABASE
@@ -55,6 +67,10 @@ spec:
       serviceAccountName: default
       terminationGracePeriodSeconds: 30
       volumes:
+      - configMap:
+          defaultMode: 420
+          name: mysql-cm
+        name: configurations
       - name: data
         persistentVolumeClaim:
           claimName: db

@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    k8s.web.com/name: db
+  name: mysql-cm
+data:
+  mysql_custom.cnf: |-
+    [client]
+    default-character-set= utf8mb4
+    [mysql]
+    default-character-set= utf8mb4
+    [mysqld]
+    character-set-client-handshake= FALSE
+    collation-server= utf8mb4_general_ci
+    lower_case_table_names= 1
+    max_allowed_packet= 104857600
