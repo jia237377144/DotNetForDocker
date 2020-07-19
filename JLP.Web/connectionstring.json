@@ -1,3 +1,4 @@
 {
-  "ConnectionString": "Data Source=jlp_db;Database=dockerweb;User ID=root;Password=123456;pooling=true;port=3306;sslmode=none;CharSet=utf8;"
+  //"ConnectionString": "Data Source=jlp_db;Database=dockerweb;User ID=root;Password=123456;pooling=true;port=3306;sslmode=none;CharSet=utf8;"
+  "ConnectionString": "Data Source=db.jlp-test.svc.cluster.local;Database=dockerweb;User ID=root;Password=123456;pooling=true;port=3306;sslmode=none;CharSet=utf8;"
 }

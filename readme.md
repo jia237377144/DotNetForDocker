@@ -34,6 +34,8 @@
 > > `dotnet new mvc`  
 > > 需要修改appsettings.json=>`"urls":"http://*:5000"`  
 > > `dotnet run` 就可以成功运行
+> ## 2.Docker-Compose
+> > Compose 是用于定义和运行多容器 Docker 应用程序的工具。通过 Compose，您可以使用 YML 文件来配置应用程序需要的所有服务。然后，使用一个命令，就可以从 YML 文件配置中创建并启动所有服务。
 # 2、项目组成部分  
 > ##  1）、JLP.Web : 
 > > 一个Core的web项目，使用该项目连接Mysql数据库  

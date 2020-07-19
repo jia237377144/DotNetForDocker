@@ -1,5 +1,3 @@
-drop DATABASE `dockerweb`;
-CREATE DATABASE `dockerweb`; 
 USE `dockerweb`;
 /*
 Navicat MySQL Data Transfer

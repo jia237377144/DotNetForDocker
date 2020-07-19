@@ -1,0 +1,217 @@
+#资源的版本的版本:kubectl explain deployment 查看所有版本 ：kubectl api-versions
+apiVersion: apps/v1
+#当前资源：Deployment，查看 所有资源: kubectl api-resources
+kind: Deployment
+metadata:
+  labels:
+    #这里就是定义Deployment的标签，在Service中使用，就和JS中的选择器一样，可以有多个
+    k8s.web.com/name: web
+  name: web
+spec:
+  #Deployment的选择器，用来选择template，
+  selector:
+    matchLabels: 
+      #这个和下面的template的labels一致，来选择template
+      k8s.web.com/name: web
+  template:
+    metadata:
+      labels:
+        #定义pod的label
+        k8s.web.com/name: web
+    spec:
+      #定义容器，这里容器可以是多个，也就是1个pod对应多个容器
+      containers:
+        - image: docker.tidebuy.net/jlp_web:latest
+          imagePullPolicy: Always
+          name: web
+          ports:
+            - containerPort: 80
+              name: http
+              protocol: TCP
+          resources:
+              requests:
+                cpu: "1"
+                memory: 1Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    k8s.web.com/name: web
+  name: web
+spec:
+  selector:
+    k8s.web.com/name: web
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: http
+  type: ClusterIP
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  labels:
+    k8s.web.com/name: web
+  name: web
+spec:
+  rules:
+    - host: www.web.com
+      http:
+          paths:
+            - backend:
+                serviceName: web
+                servicePort: 80
+              path: /
+--- 
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    k8s.web.com/name: web
+  name: web
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: ceph
+  volumeMode: Filesystem
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db
+spec:
+  selector:
+    matchLabels:
+      k8s.web.com/name: db
+  template:
+    metadata:
+      labels:
+        k8s.web.com/name: db
+    spec:
+      containers:
+      - name: db
+        image: mysql:5.7.30
+        resources:
+          limits:
+            memory: 1Gi
+            cpu: "2"
+        ports:
+        - containerPort: 3306
+          name: db
+          protocol: TCP
+        volumeMounts:
+          - mountPath: /var/lib/mysql
+            name: data
+          - mountPath: /etc/mysql/conf.d/mysql_custom.cnf
+            name: configurations
+            subPath: mysql_custom.cnf
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+                secretKeyRef:
+                  name: mysql-secrets
+                  key: mysql-password
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+                secretKeyRef:
+                  name: mysql-secrets
+                  key: mysql-root-password
+          - name: MYSQL_USER
+            value: admin
+          - name: MYSQL_DATABASE
+            value: dockerweb
+      initContainers:
+      - command:
+        - rm
+        - -fr
+        - /var/lib/mysql/lost+found
+        image: busybox:1.31.1
+        imagePullPolicy: IfNotPresent
+        name: remove-lost-found
+        resources:
+           requests:
+             cpu: 100m
+             memory: 100Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /var/lib/mysql
+          name: data
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: default
+      serviceAccountName: default
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: mysql-cm
+        name: configurations
+      - name: data
+        persistentVolumeClaim:
+          claimName: db
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    k8s.web.com/name: db
+  name: db
+spec:
+  selector:
+    k8s.web.com/name: db
+  ports:
+  - port: 3306
+    targetPort: 3306
+    name: db
+    protocol: TCP
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  labels:
+    k8s.web.com/name: db
+  name: mysql-secrets
+data:
+  mysql-root-password: MTIzNDU2
+  mysql-password: MTIzNDU2
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    k8s.web.com/name: db
+  name: db
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: ceph
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    k8s.web.com/name: db
+  name: mysql-cm
+data:
+  mysql_custom.cnf: |-
+    [client]
+    default-character-set = utf8mb4
+    [mysql]
+    default-character-set = utf8mb4
+    [mysqld]
+    character-set-client-handshake = FALSE
+    character-set-server = utf8mb4
+    collation-server = utf8mb4_general_ci
+    lower_case_table_names=1
+    max_allowed_packet=104857600
