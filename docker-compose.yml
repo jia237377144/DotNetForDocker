@@ -8,13 +8,13 @@ services:
       context: .
       dockerfile: docker/Dockerfile
     ports:
-      - 5000:80
+      - 5000:7777
     depends_on: 
       - jlp_db
     networks: 
       - web
   jlp_db:
-    image: mysql:latest
+    image: mysql:5.7
     networks:
       - web
     ports: 
@@ -24,11 +24,11 @@ services:
       MYSQL_USER: admin
       MYSQL_PASSWORD: 123456
       MYSQL_DATABASE: dockerweb
-    command: --default-authentication-plugin=mysql_native_password
     restart: always
     volumes: 
       - "./db/data:/var/lib/mysql"
       - "./db/config:/etc/mysql/conf.d"
+      - "./sql:/docker-entrypoint-initdb.d"
 networks: 
   web:
     external: true

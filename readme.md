@@ -1,17 +1,39 @@
 # 1、 DockerWeb 项目  
 > 项目目标：可以将Dotnet项目部署到K8s上  
+> 为什么需要K8S?  
+> 没有K8S之前的做法：
+> - 搭建网站运行环境
+> - 发布部署
+> - 故障无法快速转移  
+> - 纵向扩容
+> 
+> 有了K8S之后做法：
+> - 网站运行环境直接使用对应版本镜像
+> - 使用CI持续集成，DI快速部署
+> - 故障可以快速转移到集群其他节点
+> - 自动横向扩容
 
 # 2、Docker，Docker-Compose和K8S
-> ##  1.Docker 容器
+> ##  1.Docker 
 > >Docker本身并不是容器，它只是一个进程，它是创建容器的工具，是应用容器引擎。  
 > >Docker组成：(镜像)Image，（容器）Container和（镜像仓）Registry，三者的关系是两两有关系，镜像和镜像仓，镜像和容器；  
-> > >镜像仓：镜像集中存储，需要构建镜像的基础镜像可以从镜像仓中拉去,仓库分类：公共仓和私有仓。镜像仓就像Nuget，NPM，PIP3。  
-> > >常见公共仓:[DockerHub](https://hub.docker.com)，[网易云](https://c.163yun.com/hub#/home)和[阿里云](https://developer.aliyun.com/mirror/)。  
-> > >私有仓：开发者或者企业自建的镜像存储库，通常用来保存企业内部的 Docker 镜像，用于内部开发流程和产品的发布、版本控制。
-> > >常用操作：`docker pull`、`docker push`  
-> > >镜像：  
-> > >容器：  
-
+> >- 镜像仓：镜像集中存储，每个镜像都有不同的标签(tag),仓库分类：公共仓和私有仓。
+> >- 镜像：镜像就是一个只读模板，就像exe安装包一样；  
+> >- 容器：就是进项运行的实例，点击exe安装包就可以运行软件；
+> >- 常用操作：   
+> > 搜索镜像：`docker search dotnet`  
+> > 拉去镜像： `docker pull docker.tidebuy.net/dotnet/core/sdk:3.1`  
+> > 构建镜像：  `docker build -t jlp_web:test .`  
+> > 修改镜像tag: `docker tag jlp_web:test private-docker.tidebuy.net`   
+> > 推送镜像: `docker push private-docker.tidebuy.net`  
+> > 运行容器：`docker run -it -d -p 5000:80 jlp_web:test /bin/bash`
+> > 在容器中运行本地代码：`docker run --rm -it --entrypoint=/usr/bin/dotnet --workdir=/app -p 5555:7777 -v /Users/ios1/jialipeng/github/DotNetForDocker/app:/app docker.tidebuy.net/dotnet/core/sdk:3.1 /app/JLP.Web.dll`   
+> > 注意: 在容器中运行本地代码时，需要修改appsettings.json=>urls  
+> > `dotnet pull microsoft/dotnet`  
+> > `docker run --rm -it -p 5555:5000 -v /Users/ios1/jialipeng/test:/app --workdir /app microsoft/dotnet:latest /bin/bash`
+> > `dotnet new mvc`  
+> > 需要修改appsettings.json=>`"urls":"http://*:5000"`  
+> > `dotnet run` 就可以成功运行
 # 2、项目组成部分  
 > ##  1）、JLP.Web : 
 > > 一个Core的web项目，使用该项目连接Mysql数据库  

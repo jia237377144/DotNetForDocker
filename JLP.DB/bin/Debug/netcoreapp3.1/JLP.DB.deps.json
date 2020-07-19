@@ -1122,7 +1122,7 @@
     "Microsoft.CSharp/4.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ZsHxsI63yAOYPVexg3aDqpDNknF2+8sqm7Dd6jN2aljnP26nHzEi6XQyqpwi/xCf1sNfLxf+X/MYCvRjCcFQfA==",
+      "sha512": "sha512-17h8b5mXa87XYKrrVqdgZ38JefSUqLChUQpXgSnpzsM0nDOhE40FTeNWOJ/YmySGV6tG6T8+hjz6vxbknHJr6A==",
       "path": "microsoft.csharp/4.0.1",
       "hashPath": "microsoft.csharp.4.0.1.nupkg.sha512"
     },
@@ -1381,7 +1381,7 @@
     "System.Dynamic.Runtime/4.0.11": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ENL1UtXgfMuwOy8XhWdrePN+CgenZKnsZNIBpWSnDLl/kVbbBvDL2r7OmcrjGYtlik1VoelxUbxrFUwrQFveow==",
+      "sha512": "sha512-db34f6LHYM0U0JpE+sOmjar27BnqTVkbLJhgfwMpTdgTigG/Hna3m2MYVwnFzGGKnEJk2UXFuoVTr8WUbU91/A==",
       "path": "system.dynamic.runtime/4.0.11",
       "hashPath": "system.dynamic.runtime.4.0.11.nupkg.sha512"
     },
@@ -1472,7 +1472,7 @@
     "System.Net.NameResolution/4.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-5tD1TY01Bx0zgQUV9t3uTtQB35PQQj48CJrH1tK+uwQzg1QfdujyYadUOPtRLidLDCYX2A1GFLNCG7AidtwMHg==",
+      "sha512": "sha512-JdqRdM1Qym3YehqdKIi5LHrpypP4JMfxKQSNCJ2z4WawkG0il+N3XfNeJOxll2XrTnG7WgYYPoeiu/KOwg0DQw==",
       "path": "system.net.nameresolution/4.0.0",
       "hashPath": "system.net.nameresolution.4.0.0.nupkg.sha512"
     },
@@ -1731,14 +1731,14 @@
     "System.Threading.Thread/4.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-AQ7qPnWeIfym9ra8SGDm3Szghf0Vm1OuYk0rlRiiuEuk9RjzU+oLcRywo+tdQRnTHN4FrFTMpArV4pMlZ/olXw==",
+      "sha512": "sha512-gIdJqDXlOr5W9zeqFErLw3dsOsiShSCYtF9SEHitACycmvNvY8odf9kiKvp6V7aibc8C4HzzNBkWXjyfn7plbQ==",
       "path": "system.threading.thread/4.0.0",
       "hashPath": "system.threading.thread.4.0.0.nupkg.sha512"
     },
     "System.Threading.ThreadPool/4.0.10": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-9yMK1unzhFmZImgo7tpGHwh8cC2NNwSyEtyigMNEEf2L5DwMXLwCa/WdKkc8E8A8EIjFJ5W4DQiUGUmnXqITNA==",
+      "sha512": "sha512-IMXgB5Vf/5Qw1kpoVgJMOvUO1l32aC+qC3OaIZjWJOjvcxuxNWOK2ZTWWYXfij22NHxT2j1yWX5vlAeQWld9vA==",
       "path": "system.threading.threadpool/4.0.10",
       "hashPath": "system.threading.threadpool.4.0.10.nupkg.sha512"
     },
@@ -1773,14 +1773,14 @@
     "System.Xml.XmlDocument/4.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-jokrXu+xPtUQ+RhwUXhP+ioRzBX8PM0ZD7h3naaVk+wI4NS8/Z7E+3Emf3BpDwl4w6Z/mY60s7RHJfPRCFYzqQ==",
+      "sha512": "sha512-2eZu6IP+etFVBBFUFzw2w6J21DqIN5eL9Y8r8JfJWUmV28Z5P0SNU01oCisVHQgHsDhHPnmq2s1hJrJCFZWloQ==",
       "path": "system.xml.xmldocument/4.0.1",
       "hashPath": "system.xml.xmldocument.4.0.1.nupkg.sha512"
     },
     "System.Xml.XPath/4.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-dBUv0ic1qvy0DiCJN7rXghklX56qCHmd5YgL/J2jRuxy1HbLcV5EYp3PjPAFKQqilPXal7Rl9ESyKpVV1k8iiw==",
+      "sha512": "sha512-UWd1H+1IJ9Wlq5nognZ/XJdyj8qPE4XufBUkAW59ijsCPjZkZe0MUzKKJFBr+ZWBe5Wq1u1d5f2CYgE93uH7DA==",
       "path": "system.xml.xpath/4.0.1",
       "hashPath": "system.xml.xpath.4.0.1.nupkg.sha512"
     },
