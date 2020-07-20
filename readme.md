@@ -1,7 +1,28 @@
-# 1、 DockerWeb 项目  
+# DockerWeb 项目  
 
-项目目标：可以将Dotnet项目部署到K8s上  
-为什么需要K8S?  
+- [DockerWeb 项目](#dockerweb-项目)
+  - [项目目标](#项目目标)
+  - [为什么需要K8S?](#为什么需要k8s)
+  - [Docker，Docker-Compose和K8S](#dockerdocker-compose和k8s)
+    - [Docker](#docker)
+      - [常用操作](#常用操作)
+      - [在容器中运行本地代码](#在容器中运行本地代码)
+      - [构建一个新项目](#构建一个新项目)
+    - [Docker-Compose](#docker-compose)
+    - [YML](#yml)
+    - [K8S](#k8s)
+      - [Kubernetes能做什么?](#kubernetes能做什么)
+  - [项目组成部分](#项目组成部分)
+    - [JLP.Web](#jlpweb)
+    - [JLP.DB](#jlpdb)
+  - [项目实施步骤](#项目实施步骤)
+
+## 项目目标
+
+可以将Dotnet项目部署到K8s上  
+
+## 为什么需要K8S?  
+
 没有K8S之前的做法：
 
 - 搭建网站运行环境

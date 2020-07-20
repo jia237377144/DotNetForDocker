@@ -28,6 +28,9 @@ spec:
           - mountPath: /etc/mysql/conf.d/mysql_custom.cnf
             name: configurations
             subPath: mysql_custom.cnf
+          - mountPath: /docker-entrypoint-initdb.d/init.sql
+            name: configurations
+            subPath: init.sql
         env:
           - name: MYSQL_ROOT_PASSWORD
             valueFrom:
