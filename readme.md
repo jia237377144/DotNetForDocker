@@ -61,23 +61,36 @@ docker run -it -d -p 5000:80 jlp_web:test /bin/bash
 docker run --rm -it --entrypoint=/usr/bin/dotnet --workdir=/app -p 5555:7777 -v ~/github/DotNetForDocker/app:/app docker.tidebuy.net/dotnet/core/sdk:3.1 /app/JLP.Web.dll
 ```
 
-#### 构建一个新项目
+#### 构建一个新MVC项目
 
 ``` bash
-dotnet pull microsoft/dotnet
 
-docker run --rm -it -p 5555:5000 -v ~/test:/app --workdir /app microsoft/dotnet:latest /bin/bash
+#拉取dotnet镜像
+docker pull microsoft/dotnet
+
+#启动Docker，并暴露端口
+docker run --rm -it -p 5555:5000 -p 5556:5001 -v ~/test:/app --workdir /app microsoft/dotnet:latest /bin/bash
 
 #创建 mvc 项目
-dotnet new mvc
+dotnet new mvc --no-https
 
 #需要修改 launchSettings.json => {"urls":"http://*:5000"}
 sed -i 's/localhost/*/g' Properties/launchSettings.json
 
-#启动应用服务
+#启动MVC应用服务
 dotnet run
 
+#拉取Mysql镜像
+docker pull mysql:5.7
+
+#启动Mysql应用服务并暴露端口
+docker run -it -d  -e  MYSQL_ROOT_PASSWORD="123456"  -e  MYSQL_USER="admin"  -e  MYSQL_PASSWORD="123456"  -e   MYSQL_DATABASE="meshop_www"  -p 33305:3306  mysql:5.7  --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+#mvc连接mysql时，使用33305端口
+
 ```
+
+
 
 ### [Docker-Compose](https://docs.docker.com/compose/reference/exec/)
 
@@ -145,11 +158,41 @@ Kubernetes 的存在取代了Docker-Compose，因为Docker-Compose只是简单�
   2. 通过Dockerfile Build镜像：
       - `docker build -f ./docker/Dockerfile -t jlp_web:1.0 .`
       - $\color{#FF0000}{注意：上边命令在解决方案目录执行}$
+  3. 启动容器：
+      - `docker run -it --rm -p 7777:7777 jlp_web:1.0 /bin/bash`
 - 把项目通过Docker-Compose跑起来
   1. 增加[docker-compose.yml](docker-compose.yml)文件
   2. 创建网络 `docker network create web`  
   3. 设置Mysql服务[参数](https://hub.docker.com/_/mysql)  
   4. 设置卷和初始化数据库
+  5. 启动服务：- [1、 DockerWeb 项目](#1-dockerweb-项目)
+  - [Docker，Docker-Compose和K8S](#dockerdocker-compose和k8s)
+    - [Docker](#docker)
+      - [常用操作](#常用操作)
+      - [在容器中运行本地代码](#在容器中运行本地代码)
+      - [构建一个新MVC项目](#构建一个新mvc项目)
+    - [Docker-Compose](#docker-compose)
+    - [YML](#yml)
+    - [K8S](#k8s)
+      - [Kubernetes能做什么?](#kubernetes能做什么)
+  - [项目组成部分](#项目组成部分)
+    - [JLP.Web](#jlpweb)
+    - [JLP.DB](#jlpdb)
+  - [项目实施步骤](#项目实施步骤)- [1、 DockerWeb 项目](#1-dockerweb-项目)
+  - [Docker，Docker-Compose和K8S](#dockerdocker-compose和k8s)
+    - [Docker](#docker)
+      - [常用操作](#常用操作)
+      - [在容器中运行本地代码](#在容器中运行本地代码)
+      - [构建一个新MVC项目](#构建一个新mvc项目)
+    - [Docker-Compose](#docker-compose)
+    - [YML](#yml)
+    - [K8S](#k8s)
+      - [Kubernetes能做什么?](#kubernetes能做什么)
+  - [项目组成部分](#项目组成部分)
+    - [JLP.Web](#jlpweb)
+    - [JLP.DB](#jlpdb)
+  - [项目实施步骤](#项目实施步骤)
+      - `docker-compose up -d`
 - 编写K8S的yaml
   1. 部署Pod：[deployment](/k8s/web_demployment.yaml)  
   2. 提供服务：[service](/k8s/web_service.yaml)  
