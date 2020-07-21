@@ -1,28 +1,7 @@
-# DockerWeb 项目  
+# 1、 DockerWeb 项目  
 
-- [DockerWeb 项目](#dockerweb-项目)
-  - [项目目标](#项目目标)
-  - [为什么需要K8S?](#为什么需要k8s)
-  - [Docker，Docker-Compose和K8S](#dockerdocker-compose和k8s)
-    - [Docker](#docker)
-      - [常用操作](#常用操作)
-      - [在容器中运行本地代码](#在容器中运行本地代码)
-      - [构建一个新项目](#构建一个新项目)
-    - [Docker-Compose](#docker-compose)
-    - [YML](#yml)
-    - [K8S](#k8s)
-      - [Kubernetes能做什么?](#kubernetes能做什么)
-  - [项目组成部分](#项目组成部分)
-    - [JLP.Web](#jlpweb)
-    - [JLP.DB](#jlpdb)
-  - [项目实施步骤](#项目实施步骤)
-
-## 项目目标
-
-可以将Dotnet项目部署到K8s上  
-
-## 为什么需要K8S?  
-
+项目目标：可以将Dotnet项目部署到K8s上  
+为什么需要K8S?  
 没有K8S之前的做法：
 
 - 搭建网站运行环境
@@ -186,33 +165,7 @@ Kubernetes 的存在取代了Docker-Compose，因为Docker-Compose只是简单�
   2. 创建网络 `docker network create web`  
   3. 设置Mysql服务[参数](https://hub.docker.com/_/mysql)  
   4. 设置卷和初始化数据库
-  5. 启动服务：- [1、 DockerWeb 项目](#1-dockerweb-项目)
-  - [Docker，Docker-Compose和K8S](#dockerdocker-compose和k8s)
-    - [Docker](#docker)
-      - [常用操作](#常用操作)
-      - [在容器中运行本地代码](#在容器中运行本地代码)
-      - [构建一个新MVC项目](#构建一个新mvc项目)
-    - [Docker-Compose](#docker-compose)
-    - [YML](#yml)
-    - [K8S](#k8s)
-      - [Kubernetes能做什么?](#kubernetes能做什么)
-  - [项目组成部分](#项目组成部分)
-    - [JLP.Web](#jlpweb)
-    - [JLP.DB](#jlpdb)
-  - [项目实施步骤](#项目实施步骤)- [1、 DockerWeb 项目](#1-dockerweb-项目)
-  - [Docker，Docker-Compose和K8S](#dockerdocker-compose和k8s)
-    - [Docker](#docker)
-      - [常用操作](#常用操作)
-      - [在容器中运行本地代码](#在容器中运行本地代码)
-      - [构建一个新MVC项目](#构建一个新mvc项目)
-    - [Docker-Compose](#docker-compose)
-    - [YML](#yml)
-    - [K8S](#k8s)
-      - [Kubernetes能做什么?](#kubernetes能做什么)
-  - [项目组成部分](#项目组成部分)
-    - [JLP.Web](#jlpweb)
-    - [JLP.DB](#jlpdb)
-  - [项目实施步骤](#项目实施步骤)
+  5. 启动服务：
       - `docker-compose up -d`
 - 编写K8S的yaml
   1. 部署Pod：[deployment](/k8s/web_demployment.yaml)  
