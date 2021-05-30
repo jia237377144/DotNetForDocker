@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: db
 spec:
+  replicas: 1
   selector:
     matchLabels:
       k8s.web.com/name: db
@@ -13,18 +14,18 @@ spec:
     spec:
       containers:
       - name: db
-        image: mysql:5.7.30
-        resources:
-          limits:
-            memory: 1Gi
-            cpu: "2"
+        image: 192.168.31.138:5000/mysql:local.5.7
+        # resources:
+        #   limits:
+        #     memory: 512Mi
+        #     cpu: "1"
         ports:
         - containerPort: 3306
           name: db
           protocol: TCP
         volumeMounts:
-          - mountPath: /var/lib/mysql
-            name: data
+        #   - mountPath: /var/lib/mysql
+        #     name: data
           - mountPath: /etc/mysql/conf.d/mysql_custom.cnf
             name: configurations
             subPath: mysql_custom.cnf
@@ -32,7 +33,7 @@ spec:
             name: configurations
             subPath: init.sql
         env:
-          - name: MYSQL_ROOT_PASSWORD
+          - name: MYSQL_PASSWORD
             valueFrom:
                 secretKeyRef:
                   name: mysql-secrets
@@ -46,23 +47,23 @@ spec:
             value: admin
           - name: MYSQL_DATABASE
             value: dockerweb
-      initContainers:
-      - command:
-        - rm
-        - -fr
-        - /var/lib/mysql/lost+found
-        image: busybox:1.31.1
-        imagePullPolicy: IfNotPresent
-        name: remove-lost-found
-        resources:
-           requests:
-             cpu: 100m
-             memory: 100Mi
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
-        volumeMounts:
-        - mountPath: /var/lib/mysql
-          name: data
+      # initContainers:
+      # - command:
+      #   - rm
+      #   - -fr
+      #   - /var/lib/mysql/lost+found
+      #   image: busybox:1.31.1
+      #   imagePullPolicy: IfNotPresent
+      #   name: remove-lost-found
+      #   resources:
+      #      requests:
+      #        cpu: 100m
+      #        memory: 100Mi
+      #   terminationMessagePath: /dev/termination-log
+      #   terminationMessagePolicy: File
+        # volumeMounts:
+        # - mountPath: /var/lib/mysql
+        #   name: data
       restartPolicy: Always
       schedulerName: default-scheduler
       securityContext: {}
@@ -71,10 +72,10 @@ spec:
       terminationGracePeriodSeconds: 30
       volumes:
       - configMap:
-          defaultMode: 420
+          # defaultMode: 420
           name: mysql-cm
         name: configurations
-      - name: data
-        persistentVolumeClaim:
-          claimName: db
+      # - name: data
+      #   persistentVolumeClaim:
+      #     claimName: db
       

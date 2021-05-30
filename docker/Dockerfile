@@ -1,10 +1,10 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
-FROM docker.tidebuy.net/dotnet/core/aspnet:3.1 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:3.1 AS base
 WORKDIR /app
 EXPOSE 7777
 
-FROM docker.tidebuy.net/dotnet/core/sdk:3.1 AS build
+FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
 WORKDIR /src
 COPY ["JLP.Web/JLP.Web.csproj", "JLP.Web/"]
 COPY ["JLP.DB/JLP.DB.csproj", "JLP.DB/"]

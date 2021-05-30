@@ -21,14 +21,14 @@ spec:
     spec:
       #定义容器，这里容器可以是多个，也就是1个pod对应多个容器
       containers:
-        - image: docker.tidebuy.net/jlp_web:latest
-          imagePullPolicy: Always
+        - image: 192.168.31.138:5000/jlp_web:1.1
+          imagePullPolicy: IfNotPresent
           name: web
           ports:
-            - containerPort: 80
+            - containerPort: 7777
               name: http
               protocol: TCP
-          resources:
-              requests:
-                cpu: "1"
-                memory: 1Gi
+          # resources:
+          #     requests:
+          #       cpu: "1"
+          #       memory: 200Mi

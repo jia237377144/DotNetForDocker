@@ -14,3 +14,12 @@ E:/vs项目/DockerWeb/JLP.DB/obj/Debug/netcoreapp3.1/JLP.DB.csprojAssemblyRefere
 /Users/ios1/jialipeng/github/DotNetForDocker/JLP.DB/obj/Debug/netcoreapp3.1/JLP.DB.AssemblyInfo.cs
 /Users/ios1/jialipeng/github/DotNetForDocker/JLP.DB/obj/Debug/netcoreapp3.1/JLP.DB.dll
 /Users/ios1/jialipeng/github/DotNetForDocker/JLP.DB/obj/Debug/netcoreapp3.1/JLP.DB.pdb
+/Users/marui/jialipeng/DotNetForDocker/JLP.DB/bin/Debug/netcoreapp3.1/JLP.DB.deps.json
+/Users/marui/jialipeng/DotNetForDocker/JLP.DB/bin/Debug/netcoreapp3.1/JLP.DB.dll
+/Users/marui/jialipeng/DotNetForDocker/JLP.DB/bin/Debug/netcoreapp3.1/JLP.DB.pdb
+/Users/marui/jialipeng/DotNetForDocker/JLP.DB/obj/Debug/netcoreapp3.1/JLP.DB.csprojAssemblyReference.cache
+/Users/marui/jialipeng/DotNetForDocker/JLP.DB/obj/Debug/netcoreapp3.1/JLP.DB.AssemblyInfoInputs.cache
+/Users/marui/jialipeng/DotNetForDocker/JLP.DB/obj/Debug/netcoreapp3.1/JLP.DB.AssemblyInfo.cs
+/Users/marui/jialipeng/DotNetForDocker/JLP.DB/obj/Debug/netcoreapp3.1/JLP.DB.csproj.CoreCompileInputs.cache
+/Users/marui/jialipeng/DotNetForDocker/JLP.DB/obj/Debug/netcoreapp3.1/JLP.DB.dll
+/Users/marui/jialipeng/DotNetForDocker/JLP.DB/obj/Debug/netcoreapp3.1/JLP.DB.pdb
