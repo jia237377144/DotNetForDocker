@@ -253,6 +253,8 @@ paket-files/
 
 # JetBrains Rider
 .idea/
+.vscode/
+.vs/
 *.sln.iml
 
 # CodeRush
