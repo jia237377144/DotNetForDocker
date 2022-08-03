@@ -9,7 +9,7 @@ Thank you for your contribution to this repo!!!
 
 - [ ] Feature. 
 - [ ] Issue. 
-- [ ] chore. 
+- [ ] Chore. 
 - [ ] Style. 
 - [ ] Doc
 
