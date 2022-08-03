@@ -2,20 +2,14 @@ Thank you for your contribution to this repo!!!
 Before submitting this PR, Please sure: 
 
 # Background
-## Jria
+## Jira
 
+## Description
 
-
-## Description: 
-
-
-
-# Typeof change
+# Type of change
 
 - [ ] Feature. 
 - [ ] Issue. 
-- [ ] Chroe. 
+- [ ] chore. 
 - [ ] Style. 
 - [ ] Doc
-
-
